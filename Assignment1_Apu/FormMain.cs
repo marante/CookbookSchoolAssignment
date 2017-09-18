@@ -55,8 +55,15 @@ namespace Assignment1_Apu
             FormIngredient ingredientForm = new FormIngredient(this, rec);
             var result = ingredientForm.ShowDialog();
             if (result != DialogResult.OK) return;
+
             rec.Ingredients = ingredientForm.Ingredients;
             rec.NumOfIngredients = ingredientForm.Ingredients.Count;
+
+            RecipeListbox.Items.Clear();
+            foreach (var recipe in _cookBook.Recipes)
+            {
+                RecipeListbox.Items.Add(recipe);
+            }
         }
 
         /// <summary>

@@ -45,7 +45,6 @@ namespace Assignment1_Apu
 
         private void BtnIngredientOk_Click(object sender, EventArgs e)
         {
-            MainForm.Refresh();
             this.Close();
         }
 
@@ -99,8 +98,10 @@ namespace Assignment1_Apu
                 Amount = float.Parse(IngredientAmount.Text),
                 Name = ingredientTextbox.Text
             };
-            IngredientListBox.Items.Add(ingredient);
+
             Ingredients.Add(ingredient);
+
+            IngredientListBox.Items.Add(ingredient);
         }
 
         private void BtnChangePortionValues_Click(object sender, EventArgs e)
@@ -115,7 +116,11 @@ namespace Assignment1_Apu
                 ingredient.Amount = (ingredient.Amount * portions);
             }
             cmbAmountOfPortions.SelectedItem = null;
-            IngredientListBox.Refresh();
+            IngredientListBox.Items.Clear();
+            foreach (var ingredient in Ingredients)
+            {
+                IngredientListBox.Items.Add(ingredient);
+            }
         }
     }
 }
