@@ -1,11 +1,20 @@
 ﻿***************
+Things to do
 
+assignment 1
+1. Each recipe should have a list of the ingredients.
+2. Each ingredient should have a name, amount and a unit for a given portion.
+3. The program should then scale the amount to calculate multiple portions.
+4. The recipes should be categorized according to type of vegetarian, vegan etc.
+5. Recipes should also be categorized in type of dish (appetizer, main course and dessert).
+6. Construct a classdiagram for the solution.
 
-Shit to fix
+assignment 2
+1. The  solution  must  contain  at  least  an  Interface.
+2. One  or  more  abstract  classes,  the  code  must  be  well  structured.  
+3. The  program  should  work satisfactorily. Data persistence and registry handling are not included in this version.
 
-1. Editing recipe ingredients doesn't save it into the object, just changes it for the given window.
-2. Validation for everything basicly.
-3. Portions for a given amount of people doesn't work. Changes it for the next time you open up a window.
+assignment 3
 
 
 ***************

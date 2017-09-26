@@ -157,7 +157,7 @@ namespace Assignment1_Apu
             // 
             this.RecipeListbox.DisplayMember = "DisplayString";
             this.RecipeListbox.FormattingEnabled = true;
-            this.RecipeListbox.Location = new System.Drawing.Point(533, 124);
+            this.RecipeListbox.Location = new System.Drawing.Point(540, 122);
             this.RecipeListbox.Name = "RecipeListbox";
             this.RecipeListbox.Size = new System.Drawing.Size(452, 329);
             this.RecipeListbox.TabIndex = 4;

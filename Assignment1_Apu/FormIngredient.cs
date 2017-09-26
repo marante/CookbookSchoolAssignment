@@ -7,29 +7,40 @@ namespace Assignment1_Apu
 {
     public partial class FormIngredient : Form
     {
-        public ObservableCollection<Ingredient> Ingredients = new ObservableCollection<Ingredient>();
-        public FormMain MainForm;
+        private FormMain _mainForm;
 
+        /// <summary>
+        /// Standard constructor, initializing the form components.
+        /// </summary>
         public FormIngredient()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Constructor taking a form as parameter.
+        /// </summary>
+        /// <param name="mainForm"></param>
         public FormIngredient(FormMain mainForm)
         {
             InitializeComponent();
-            MainForm = mainForm;
+            _mainForm = mainForm;
         }
 
+        /// <summary>
+        /// Constructor taking 2 parameters
+        /// </summary>
+        /// <param name="mainForm"></param>
+        /// <param name="recipe"></param>
         public FormIngredient(FormMain mainForm, Recipe recipe)
         {
             InitializeComponent();
-            MainForm = mainForm;
+            _mainForm = mainForm;
             Recipe rec = recipe;
 
             foreach (var ingredient in rec.Ingredients)
             {
-                Ingredients.Add(ingredient);
+                GetIngredients.Add(ingredient);
                 IngredientListBox.Items.Add(ingredient);
             }
 
@@ -43,6 +54,11 @@ namespace Assignment1_Apu
             }
         }
 
+        /// <summary>
+        /// Eventhandler for the Ok button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnIngredientOk_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -58,11 +74,16 @@ namespace Assignment1_Apu
             Close();
         }
 
+        /// <summary>
+        /// Button for deleting an ingredient from the list.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnIngredientDelete_Click(object sender, EventArgs e)
         {
             var selIngredient = (Ingredient)IngredientListBox.SelectedItem;
             IngredientListBox.Items.Remove(IngredientListBox.SelectedItem);
-            Ingredients.Remove(selIngredient);
+            GetIngredients.Remove(selIngredient);
         }
 
         /// <summary>
@@ -99,7 +120,7 @@ namespace Assignment1_Apu
                 Name = ingredientTextbox.Text
             };
 
-            Ingredients.Add(ingredient);
+            GetIngredients.Add(ingredient);
 
             IngredientListBox.Items.Add(ingredient);
         }
@@ -117,10 +138,18 @@ namespace Assignment1_Apu
             }
             cmbAmountOfPortions.SelectedItem = null;
             IngredientListBox.Items.Clear();
-            foreach (var ingredient in Ingredients)
+            foreach (var ingredient in GetIngredients)
             {
                 IngredientListBox.Items.Add(ingredient);
             }
         }
+
+        // Properties.
+        #region Properties.
+
+        public ObservableCollection<Ingredient> GetIngredients { get; } = new ObservableCollection<Ingredient>();
+
+        #endregion
+
     }
 }

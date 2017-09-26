@@ -8,7 +8,7 @@ namespace Assignment1_Apu
 {
     public partial class FormMain : Form
     {
-        private CookBook _cookBook = new CookBook();
+        private readonly CookBook _cookBook = new CookBook();
         private ObservableCollection<Ingredient> _ingredients = new ObservableCollection<Ingredient>();
 
         public FormMain()
@@ -38,7 +38,7 @@ namespace Assignment1_Apu
             FormIngredient ingredientForm = new FormIngredient(this);
             var result = ingredientForm.ShowDialog();
             if (result == DialogResult.OK)
-                _ingredients = ingredientForm.Ingredients;
+                _ingredients = ingredientForm.GetIngredients;
         }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace Assignment1_Apu
             var result = ingredientForm.ShowDialog();
             if (result != DialogResult.OK) return;
 
-            rec.Ingredients = ingredientForm.Ingredients;
-            rec.NumOfIngredients = ingredientForm.Ingredients.Count;
+            rec.Ingredients = ingredientForm.GetIngredients;
+            rec.NumOfIngredients = ingredientForm.GetIngredients.Count;
 
             RecipeListbox.Items.Clear();
             foreach (var recipe in _cookBook.Recipes)
