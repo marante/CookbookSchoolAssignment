@@ -1,15 +1,16 @@
 ﻿using Assignment1_Apu.Enums;
 using Assignment1_Apu.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Forms;
 
 namespace Assignment1_Apu
 {
-    public partial class FormMain : Form
+    public partial class FormMain : Form, IClearable
     {
         private readonly CookBook _cookBook = new CookBook();
-        private ObservableCollection<Ingredient> _ingredients = new ObservableCollection<Ingredient>();
+        private List<Ingredient> _ingredients = new List<Ingredient>();
 
         public FormMain()
         {
@@ -85,8 +86,9 @@ namespace Assignment1_Apu
 
         /// <summary>
         /// Method for clearing the inputs when a recipe is added.
+        /// Makes clearing forms more streamlined.
         /// </summary>
-        private void ClearForm()
+        public void ClearForm()
         {
             RecipeNameTextBox.Clear();
             RecipeTextbox.Clear();

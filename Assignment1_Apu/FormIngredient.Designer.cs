@@ -107,9 +107,11 @@
             // IngredientAmount
             // 
             this.IngredientAmount.Location = new System.Drawing.Point(7, 19);
+            this.IngredientAmount.MaxLength = 2;
             this.IngredientAmount.Name = "IngredientAmount";
             this.IngredientAmount.Size = new System.Drawing.Size(63, 20);
             this.IngredientAmount.TabIndex = 9;
+            this.IngredientAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckIfNumbers);
             // 
             // IngredientListBox
             // 

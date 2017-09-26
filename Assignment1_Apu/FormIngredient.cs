@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Assignment1_Apu
 {
-    public partial class FormIngredient : Form
+    public partial class FormIngredient : Form, IClearable
     {
         private FormMain _mainForm;
 
@@ -100,10 +100,10 @@ namespace Assignment1_Apu
         /// <summary>
         /// Just a method for clearing the inputfields.
         /// </summary>
-        private void ClearForm()
+        public void ClearForm()
         {
-            ingredientTextbox.Text = "";
-            IngredientAmount.Text = "";
+            ingredientTextbox.Clear();
+            IngredientAmount.Clear();
         }
 
         /// <summary>
@@ -147,9 +147,30 @@ namespace Assignment1_Apu
         // Properties.
         #region Properties.
 
-        public ObservableCollection<Ingredient> GetIngredients { get; } = new ObservableCollection<Ingredient>();
+        public List<Ingredient> GetIngredients { get; } = new List<Ingredient>();
 
         #endregion
 
+        /// <summary>
+        /// Helper function to make sure users only input numbers in the amount textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CheckIfNumbers(object sender, KeyPressEventArgs e)
+        {
+            // Makes sure that that pressed key is NOT a control character
+            // also makes sure it's not a char (only allow digits).
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && (((TextBox) sender).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

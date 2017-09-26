@@ -60,6 +60,7 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperMethods\ValidateUser.cs" />
+    <Compile Include="IClearable.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\CookBook.cs" />
     <Compile Include="Models\Ingredient.cs" />

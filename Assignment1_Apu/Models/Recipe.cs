@@ -12,7 +12,7 @@ namespace Assignment1_Apu
         public string Name { get; set; }
         public string Description { get; set; }
         public int NumOfIngredients { get; set; }
-        public ObservableCollection<Ingredient> Ingredients { get; set; } = new ObservableCollection<Ingredient>();
+        public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
         public Dish Dish { get; set; }
         public MealType MealType { get; set; }
 

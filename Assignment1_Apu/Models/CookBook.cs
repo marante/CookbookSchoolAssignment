@@ -12,6 +12,6 @@ namespace Assignment1_Apu.Models
     /// </summary>
     public class CookBook : Book
     {
-        public ObservableCollection<Recipe> Recipes { get; set; } = new ObservableCollection<Recipe>();
+        public List<Recipe> Recipes { get; set; } = new List<Recipe>();
     }
 }
