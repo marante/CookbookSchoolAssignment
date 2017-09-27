@@ -11,6 +11,7 @@ namespace Assignment1_Apu
     /// Implementation of the IListManager interface.
     /// </summary>
     /// <typeparam name="T"></typeparam>
+    [Serializable]
     public class ListManager<T> : IListManager<T>
     {
         private List<T> m_list;
