@@ -31,24 +31,39 @@ namespace Assignment1_Apu
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.BtnRecipeAddIngredients = new System.Windows.Forms.Button();
             this.RecipeDropdownCategory = new System.Windows.Forms.ComboBox();
             this.RecipeTextbox = new System.Windows.Forms.TextBox();
             this.AddNewRecipe = new System.Windows.Forms.GroupBox();
             this.MealTypeDropdownList = new System.Windows.Forms.ComboBox();
             this.RecipeNameTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCategoryOfRecipe = new System.Windows.Forms.Label();
+            this.lblNameOfRecipe = new System.Windows.Forms.Label();
             this.BtnAddRecipe = new System.Windows.Forms.Button();
             this.RecipeListbox = new System.Windows.Forms.ListBox();
             this.BtnEditRecipe = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblListboxDescrip = new System.Windows.Forms.Label();
+            this.lblListBoxNoOfIngredients = new System.Windows.Forms.Label();
+            this.lblListBoxCategory = new System.Windows.Forms.Label();
+            this.lblListBoxNameOfRecipe = new System.Windows.Forms.Label();
+            this.lblListboxDish = new System.Windows.Forms.Label();
             this.BtnDeleteRecipe = new System.Windows.Forms.Button();
+            this.mnuFileStrip = new System.Windows.Forms.MenuStrip();
+            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importFromXMLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToXMLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNewRecipe.SuspendLayout();
+            this.mnuFileStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnRecipeAddIngredients
@@ -65,12 +80,6 @@ namespace Assignment1_Apu
             // 
             // RecipeDropdownCategory
             // 
-            this.RecipeDropdownCategory.DataSource = new Assignment1_Apu.Enums.Dish[] {
-        Assignment1_Apu.Enums.Dish.Meat,
-        Assignment1_Apu.Enums.Dish.Bird,
-        Assignment1_Apu.Enums.Dish.Fish,
-        Assignment1_Apu.Enums.Dish.Vegetarian,
-        Assignment1_Apu.Enums.Dish.Vegan};
             this.RecipeDropdownCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RecipeDropdownCategory.FormattingEnabled = true;
             this.RecipeDropdownCategory.Location = new System.Drawing.Point(133, 61);
@@ -90,8 +99,8 @@ namespace Assignment1_Apu
             // 
             this.AddNewRecipe.Controls.Add(this.MealTypeDropdownList);
             this.AddNewRecipe.Controls.Add(this.RecipeNameTextBox);
-            this.AddNewRecipe.Controls.Add(this.label2);
-            this.AddNewRecipe.Controls.Add(this.label1);
+            this.AddNewRecipe.Controls.Add(this.lblCategoryOfRecipe);
+            this.AddNewRecipe.Controls.Add(this.lblNameOfRecipe);
             this.AddNewRecipe.Controls.Add(this.RecipeTextbox);
             this.AddNewRecipe.Controls.Add(this.BtnRecipeAddIngredients);
             this.AddNewRecipe.Controls.Add(this.RecipeDropdownCategory);
@@ -106,10 +115,6 @@ namespace Assignment1_Apu
             // MealTypeDropdownList
             // 
             this.MealTypeDropdownList.BackColor = System.Drawing.SystemColors.Control;
-            this.MealTypeDropdownList.DataSource = new Assignment1_Apu.Enums.MealType[] {
-        Assignment1_Apu.Enums.MealType.Appetizer,
-        Assignment1_Apu.Enums.MealType.MainCourse,
-        Assignment1_Apu.Enums.MealType.Dessert};
             this.MealTypeDropdownList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MealTypeDropdownList.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.MealTypeDropdownList.FormattingEnabled = true;
@@ -125,23 +130,23 @@ namespace Assignment1_Apu
             this.RecipeNameTextBox.Size = new System.Drawing.Size(340, 22);
             this.RecipeNameTextBox.TabIndex = 4;
             // 
-            // label2
+            // lblCategoryOfRecipe
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 16);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Category";
+            this.lblCategoryOfRecipe.AutoSize = true;
+            this.lblCategoryOfRecipe.Location = new System.Drawing.Point(6, 61);
+            this.lblCategoryOfRecipe.Name = "lblCategoryOfRecipe";
+            this.lblCategoryOfRecipe.Size = new System.Drawing.Size(63, 16);
+            this.lblCategoryOfRecipe.TabIndex = 4;
+            this.lblCategoryOfRecipe.Text = "Category";
             // 
-            // label1
+            // lblNameOfRecipe
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Name of recipe";
+            this.lblNameOfRecipe.AutoSize = true;
+            this.lblNameOfRecipe.Location = new System.Drawing.Point(6, 27);
+            this.lblNameOfRecipe.Name = "lblNameOfRecipe";
+            this.lblNameOfRecipe.Size = new System.Drawing.Size(100, 16);
+            this.lblNameOfRecipe.TabIndex = 3;
+            this.lblNameOfRecipe.Text = "Name of recipe";
             // 
             // BtnAddRecipe
             // 
@@ -174,51 +179,51 @@ namespace Assignment1_Apu
             this.BtnEditRecipe.UseVisualStyleBackColor = false;
             this.BtnEditRecipe.Click += new System.EventHandler(this.BtnEditRecipe_Click);
             // 
-            // label3
+            // lblListboxDescrip
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(892, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Description";
+            this.lblListboxDescrip.AutoSize = true;
+            this.lblListboxDescrip.Location = new System.Drawing.Point(892, 80);
+            this.lblListboxDescrip.Name = "lblListboxDescrip";
+            this.lblListboxDescrip.Size = new System.Drawing.Size(60, 13);
+            this.lblListboxDescrip.TabIndex = 6;
+            this.lblListboxDescrip.Text = "Description";
             // 
-            // label4
+            // lblListBoxNoOfIngredients
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(720, 76);
-            this.label4.MaximumSize = new System.Drawing.Size(60, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 26);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "No. of ingred.";
+            this.lblListBoxNoOfIngredients.AutoSize = true;
+            this.lblListBoxNoOfIngredients.Location = new System.Drawing.Point(720, 76);
+            this.lblListBoxNoOfIngredients.MaximumSize = new System.Drawing.Size(60, 0);
+            this.lblListBoxNoOfIngredients.Name = "lblListBoxNoOfIngredients";
+            this.lblListBoxNoOfIngredients.Size = new System.Drawing.Size(39, 26);
+            this.lblListBoxNoOfIngredients.TabIndex = 7;
+            this.lblListBoxNoOfIngredients.Text = "No. of ingred.";
             // 
-            // label5
+            // lblListBoxCategory
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(775, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Category";
+            this.lblListBoxCategory.AutoSize = true;
+            this.lblListBoxCategory.Location = new System.Drawing.Point(775, 80);
+            this.lblListBoxCategory.Name = "lblListBoxCategory";
+            this.lblListBoxCategory.Size = new System.Drawing.Size(49, 13);
+            this.lblListBoxCategory.TabIndex = 8;
+            this.lblListBoxCategory.Text = "Category";
             // 
-            // label6
+            // lblListBoxNameOfRecipe
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(530, 80);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Name";
+            this.lblListBoxNameOfRecipe.AutoSize = true;
+            this.lblListBoxNameOfRecipe.Location = new System.Drawing.Point(530, 80);
+            this.lblListBoxNameOfRecipe.Name = "lblListBoxNameOfRecipe";
+            this.lblListBoxNameOfRecipe.Size = new System.Drawing.Size(35, 13);
+            this.lblListBoxNameOfRecipe.TabIndex = 9;
+            this.lblListBoxNameOfRecipe.Text = "Name";
             // 
-            // label7
+            // lblListboxDish
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(839, 80);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Dish";
+            this.lblListboxDish.AutoSize = true;
+            this.lblListboxDish.Location = new System.Drawing.Point(839, 80);
+            this.lblListboxDish.Name = "lblListboxDish";
+            this.lblListboxDish.Size = new System.Drawing.Size(28, 13);
+            this.lblListboxDish.TabIndex = 10;
+            this.lblListboxDish.Text = "Dish";
             // 
             // BtnDeleteRecipe
             // 
@@ -232,25 +237,136 @@ namespace Assignment1_Apu
             this.BtnDeleteRecipe.UseVisualStyleBackColor = false;
             this.BtnDeleteRecipe.Click += new System.EventHandler(this.BtnDeleteRecipe_Click);
             // 
+            // mnuFileStrip
+            // 
+            this.mnuFileStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFile});
+            this.mnuFileStrip.Location = new System.Drawing.Point(0, 0);
+            this.mnuFileStrip.Name = "mnuFileStrip";
+            this.mnuFileStrip.Size = new System.Drawing.Size(1004, 24);
+            this.mnuFileStrip.TabIndex = 12;
+            this.mnuFileStrip.Text = "menuStrip1";
+            // 
+            // mnuFile
+            // 
+            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFileNew,
+            this.mnuFileOpen,
+            this.toolStripSeparator,
+            this.mnuFileSave,
+            this.mnuFileSaveAs,
+            this.toolStripSeparator1,
+            this.xMLToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.mnuFileExit});
+            this.mnuFile.Name = "mnuFile";
+            this.mnuFile.Size = new System.Drawing.Size(37, 20);
+            this.mnuFile.Text = "&File";
+            // 
+            // mnuFileNew
+            // 
+            this.mnuFileNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.mnuFileNew.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileNew.Image")));
+            this.mnuFileNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuFileNew.Name = "mnuFileNew";
+            this.mnuFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.mnuFileNew.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileNew.Text = "&New";
+            this.mnuFileNew.Click += new System.EventHandler(this.mnuFileNew_Click);
+            // 
+            // mnuFileOpen
+            // 
+            this.mnuFileOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.mnuFileOpen.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileOpen.Image")));
+            this.mnuFileOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuFileOpen.Name = "mnuFileOpen";
+            this.mnuFileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.mnuFileOpen.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileOpen.Text = "&Open";
+            this.mnuFileOpen.Click += new System.EventHandler(this.mnuFileOpen_Click);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(149, 6);
+            // 
+            // mnuFileSave
+            // 
+            this.mnuFileSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.mnuFileSave.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileSave.Image")));
+            this.mnuFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuFileSave.Name = "mnuFileSave";
+            this.mnuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.mnuFileSave.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileSave.Text = "&Save";
+            this.mnuFileSave.Click += new System.EventHandler(this.mnuFileSave_Click);
+            // 
+            // mnuFileSaveAs
+            // 
+            this.mnuFileSaveAs.Name = "mnuFileSaveAs";
+            this.mnuFileSaveAs.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileSaveAs.Text = "Save &As";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // mnuFileExit
+            // 
+            this.mnuFileExit.Name = "mnuFileExit";
+            this.mnuFileExit.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileExit.Text = "E&xit";
+            // 
+            // xMLToolStripMenuItem
+            // 
+            this.xMLToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importFromXMLFileToolStripMenuItem,
+            this.exportToXMLFileToolStripMenuItem});
+            this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
+            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xMLToolStripMenuItem.Text = "XML";
+            // 
+            // importFromXMLFileToolStripMenuItem
+            // 
+            this.importFromXMLFileToolStripMenuItem.Name = "importFromXMLFileToolStripMenuItem";
+            this.importFromXMLFileToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.importFromXMLFileToolStripMenuItem.Text = "Import from XML file";
+            // 
+            // exportToXMLFileToolStripMenuItem
+            // 
+            this.exportToXMLFileToolStripMenuItem.Name = "exportToXMLFileToolStripMenuItem";
+            this.exportToXMLFileToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.exportToXMLFileToolStripMenuItem.Text = "Export to XML file";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 544);
             this.Controls.Add(this.BtnDeleteRecipe);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblListboxDish);
+            this.Controls.Add(this.lblListBoxNameOfRecipe);
+            this.Controls.Add(this.lblListBoxCategory);
+            this.Controls.Add(this.lblListBoxNoOfIngredients);
+            this.Controls.Add(this.lblListboxDescrip);
             this.Controls.Add(this.BtnEditRecipe);
             this.Controls.Add(this.RecipeListbox);
             this.Controls.Add(this.BtnAddRecipe);
             this.Controls.Add(this.AddNewRecipe);
+            this.Controls.Add(this.mnuFileStrip);
+            this.MainMenuStrip = this.mnuFileStrip;
             this.Name = "FormMain";
             this.Text = "Apu\'s Cook Book";
             this.AddNewRecipe.ResumeLayout(false);
             this.AddNewRecipe.PerformLayout();
+            this.mnuFileStrip.ResumeLayout(false);
+            this.mnuFileStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,18 +379,31 @@ namespace Assignment1_Apu
         private System.Windows.Forms.TextBox RecipeTextbox;
         private System.Windows.Forms.GroupBox AddNewRecipe;
         private System.Windows.Forms.TextBox RecipeNameTextBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCategoryOfRecipe;
+        private System.Windows.Forms.Label lblNameOfRecipe;
         private System.Windows.Forms.Button BtnAddRecipe;
         private System.Windows.Forms.ListBox RecipeListbox;
         private System.Windows.Forms.Button BtnEditRecipe;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblListboxDescrip;
+        private System.Windows.Forms.Label lblListBoxNoOfIngredients;
+        private System.Windows.Forms.Label lblListBoxCategory;
+        private System.Windows.Forms.Label lblListBoxNameOfRecipe;
         private System.Windows.Forms.ComboBox MealTypeDropdownList;
-        private Label label7;
+        private Label lblListboxDish;
         private Button BtnDeleteRecipe;
+        private MenuStrip mnuFileStrip;
+        private ToolStripMenuItem mnuFile;
+        private ToolStripMenuItem mnuFileNew;
+        private ToolStripMenuItem mnuFileOpen;
+        private ToolStripSeparator toolStripSeparator;
+        private ToolStripMenuItem mnuFileSave;
+        private ToolStripMenuItem mnuFileSaveAs;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem mnuFileExit;
+        private ToolStripMenuItem xMLToolStripMenuItem;
+        private ToolStripMenuItem importFromXMLFileToolStripMenuItem;
+        private ToolStripMenuItem exportToXMLFileToolStripMenuItem;
     }
 }
 

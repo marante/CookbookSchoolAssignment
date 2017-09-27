@@ -3,18 +3,34 @@ using Assignment1_Apu.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Forms;
+using Assignment1_Apu.HelperMethods;
 
 namespace Assignment1_Apu
 {
     public partial class FormMain : Form, IClearable
     {
-        private readonly CookBook _cookBook = new CookBook();
+        private CookBook _cookBook = new CookBook();
         private List<Ingredient> _ingredients = new List<Ingredient>();
+        private RecipeManager manager;
+        private bool _isSaved;
+        private FileHelper fileHelper;
 
         public FormMain()
         {
             InitializeComponent();
+            // Adding items to dropdownlists.
+            RecipeDropdownCategory.Items.AddRange(Enum.GetNames(typeof(MealType)));
+            MealTypeDropdownList.Items.AddRange(Enum.GetNames(typeof(Dish)));
+
+            RecipeDropdownCategory.SelectedIndex = 0;
+            MealTypeDropdownList.SelectedIndex = 0;
+
+            // Initializing variables
+            manager = new RecipeManager();
+            _isSaved = false;
+            fileHelper = new FileHelper();
         }
 
         #region Clickevents for buttons.
@@ -79,7 +95,11 @@ namespace Assignment1_Apu
 
             var selRecipe = (Recipe)RecipeListbox.SelectedItem;
             RecipeListbox.Items.Remove(RecipeListbox.SelectedItem);
-            _cookBook.Recipes.Remove(selRecipe);
+           // _cookBook.Recipes.Remove(selRecipe);
+            var index = manager.GetIndex(selRecipe);
+            manager.DeleteAt(index);
+
+            // Deleting item to the Listmanager class. For assignment 3
         }
 
         #endregion
@@ -111,9 +131,57 @@ namespace Assignment1_Apu
             };
 
             // Adding the recipe to the cookbook and updating the Recipe list
-            _cookBook.Recipes.Add(recipe);
+            //_cookBook.Recipes.Add(recipe);
             RecipeListbox.Items.Add(recipe);
+
+            // Adding items to the Listmanager class. For assignment 3
+            manager.Add(recipe);
             ClearForm();
         }
+        #region Menustrip button actions.
+        /// <summary>
+        /// Opens a new MainForm, without saving the data from the last session.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuFileNew_Click(object sender, EventArgs e)
+        {
+            if (!_isSaved)
+            {
+                var result = MessageBox.Show("You have unsaved data. Would you like to continue?", "Unsaved Data",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.OK)
+                {
+                    Application.Restart();
+                    Environment.Exit(0);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Opens a binary file containing data for the cookbook.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuFileOpen_Click(object sender, EventArgs e)
+        {
+            var filePath = fileHelper.GetFilePath();
+            string errorMsg = null;
+            manager = Serializers.Binary.ReadFromBinaryFile<RecipeManager>(filePath, out errorMsg);
+        }
+
+        /// <summary>
+        /// Saves the cookbook object to a data file using binary serialization.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuFileSave_Click(object sender, EventArgs e)
+        {
+            var path = fileHelper.GetPath();
+            Serializers.Binary.WriteToBinaryFile(manager, path);
+        }
+
+        #endregion
+
     }
 }

@@ -1,12 +1,13 @@
-﻿using Assignment1_Apu.Enums;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using Assignment1_Apu.Enums;
 
-namespace Assignment1_Apu
+namespace Assignment1_Apu.Models
 {
     /// <summary>
     /// Recipe model
     /// </summary>
+    [Serializable]
     public class Recipe
     {
         public string Name { get; set; }

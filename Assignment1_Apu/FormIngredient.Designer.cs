@@ -31,7 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnChangePortionValues = new System.Windows.Forms.Button();
             this.cmbAmountOfPortions = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblPortions = new System.Windows.Forms.Label();
             this.ingredientTextbox = new System.Windows.Forms.TextBox();
             this.IngredientAmount = new System.Windows.Forms.TextBox();
             this.IngredientListBox = new System.Windows.Forms.ListBox();
@@ -39,7 +39,7 @@
             this.BtnIngredientDelete = new System.Windows.Forms.Button();
             this.BtnIngredientOk = new System.Windows.Forms.Button();
             this.BtnIngredientCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblNumberOfIngredients = new System.Windows.Forms.Label();
             this.lblNumOfIngredients = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +48,7 @@
             // 
             this.groupBox1.Controls.Add(this.btnChangePortionValues);
             this.groupBox1.Controls.Add(this.cmbAmountOfPortions);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.lblPortions);
             this.groupBox1.Controls.Add(this.ingredientTextbox);
             this.groupBox1.Controls.Add(this.IngredientAmount);
             this.groupBox1.Controls.Add(this.IngredientListBox);
@@ -88,14 +88,14 @@
             this.cmbAmountOfPortions.Size = new System.Drawing.Size(75, 21);
             this.cmbAmountOfPortions.TabIndex = 13;
             // 
-            // label2
+            // lblPortions
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(345, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Portions";
+            this.lblPortions.AutoSize = true;
+            this.lblPortions.Location = new System.Drawing.Point(345, 51);
+            this.lblPortions.Name = "lblPortions";
+            this.lblPortions.Size = new System.Drawing.Size(45, 13);
+            this.lblPortions.TabIndex = 12;
+            this.lblPortions.Text = "Portions";
             // 
             // ingredientTextbox
             // 
@@ -164,14 +164,14 @@
             this.BtnIngredientCancel.UseVisualStyleBackColor = true;
             this.BtnIngredientCancel.Click += new System.EventHandler(this.BtnIngredientCancel_Click);
             // 
-            // label1
+            // lblNumberOfIngredients
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Num. of ingredients";
+            this.lblNumberOfIngredients.AutoSize = true;
+            this.lblNumberOfIngredients.Location = new System.Drawing.Point(12, 21);
+            this.lblNumberOfIngredients.Name = "lblNumberOfIngredients";
+            this.lblNumberOfIngredients.Size = new System.Drawing.Size(98, 13);
+            this.lblNumberOfIngredients.TabIndex = 5;
+            this.lblNumberOfIngredients.Text = "Num. of ingredients";
             // 
             // lblNumOfIngredients
             // 
@@ -188,7 +188,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 431);
             this.Controls.Add(this.lblNumOfIngredients);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblNumberOfIngredients);
             this.Controls.Add(this.BtnIngredientOk);
             this.Controls.Add(this.BtnIngredientCancel);
             this.Controls.Add(this.groupBox1);
@@ -208,12 +208,12 @@
         private System.Windows.Forms.Button BtnIngredientAdd;
         private System.Windows.Forms.Button BtnIngredientDelete;
         private System.Windows.Forms.Button BtnIngredientCancel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNumberOfIngredients;
         private System.Windows.Forms.Label lblNumOfIngredients;
         private System.Windows.Forms.TextBox IngredientAmount;
         private System.Windows.Forms.TextBox ingredientTextbox;
         private System.Windows.Forms.ListBox IngredientListBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPortions;
         private System.Windows.Forms.ComboBox cmbAmountOfPortions;
         private System.Windows.Forms.Button btnChangePortionValues;
     }

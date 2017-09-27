@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Forms;
+using Assignment1_Apu.HelperMethods;
+using Assignment1_Apu.Models;
 
 namespace Assignment1_Apu
 {

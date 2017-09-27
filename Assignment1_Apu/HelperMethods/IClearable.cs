@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assignment1_Apu
+﻿namespace Assignment1_Apu.HelperMethods
 {
     /// <summary>
     /// Just a simple interface to implement a clear form method.
