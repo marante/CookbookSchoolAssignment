@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assignment1_Apu.Models;
+﻿using Assignment1_Apu.Models;
+using System;
 
 namespace Assignment1_Apu
 {
-    public class RecipeManager : ListManager<Recipe>
+    /// <summary>
+    ///     Serializable class that creates a way to instansiate the ListManager class.
+    /// </summary>
+    [Serializable]
+    public class RecipeManager : ListManager<BaseRecipe>
     {
-        public RecipeManager()
-        {
-            
-        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows.Forms;
 using Assignment1_Apu.HelperMethods;
 using Assignment1_Apu.Models;
@@ -12,7 +11,7 @@ namespace Assignment1_Apu
         private FormMain _mainForm;
 
         /// <summary>
-        /// Standard constructor, initializing the form components.
+        ///     Standard constructor, initializing the form components.
         /// </summary>
         public FormIngredient()
         {
@@ -20,7 +19,7 @@ namespace Assignment1_Apu
         }
 
         /// <summary>
-        /// Constructor taking a form as parameter.
+        ///     Constructor taking a form as parameter.
         /// </summary>
         /// <param name="mainForm"></param>
         public FormIngredient(FormMain mainForm)
@@ -30,15 +29,15 @@ namespace Assignment1_Apu
         }
 
         /// <summary>
-        /// Constructor taking 2 parameters
+        ///     Constructor taking 2 parameters
         /// </summary>
         /// <param name="mainForm"></param>
         /// <param name="recipe"></param>
-        public FormIngredient(FormMain mainForm, Recipe recipe)
+        public FormIngredient(FormMain mainForm, BaseRecipe recipe)
         {
             InitializeComponent();
             _mainForm = mainForm;
-            Recipe rec = recipe;
+            var rec = recipe;
 
             foreach (var ingredient in rec.Ingredients)
             {
@@ -47,27 +46,40 @@ namespace Assignment1_Apu
             }
 
             if (IngredientListBox.Items.Count > 0)
-            {
                 lblNumOfIngredients.Text = IngredientListBox.Items.Count.ToString();
-            }
             else if (IngredientListBox.Items.Count == 0)
-            {
                 lblNumOfIngredients.Text = "No ingredients have been added yet.";
-            }
+        }
+
+        // Properties.
+
+        #region Properties.
+
+        public List<Ingredient> GetIngredients { get; } = new List<Ingredient>();
+
+        #endregion
+
+        /// <summary>
+        ///     Just a method for clearing the inputfields.
+        /// </summary>
+        public void ClearForm()
+        {
+            ingredientTextbox.Clear();
+            IngredientAmount.Clear();
         }
 
         /// <summary>
-        /// Eventhandler for the Ok button.
+        ///     Eventhandler for the Ok button.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnIngredientOk_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /// <summary>
-        /// Method that cancels the current form, without saving.
+        ///     Method that cancels the current form, without saving.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -77,19 +89,19 @@ namespace Assignment1_Apu
         }
 
         /// <summary>
-        /// Button for deleting an ingredient from the list.
+        ///     Button for deleting an ingredient from the list.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnIngredientDelete_Click(object sender, EventArgs e)
         {
-            var selIngredient = (Ingredient)IngredientListBox.SelectedItem;
+            var selIngredient = (Ingredient) IngredientListBox.SelectedItem;
             IngredientListBox.Items.Remove(IngredientListBox.SelectedItem);
             GetIngredients.Remove(selIngredient);
         }
 
         /// <summary>
-        /// Method for adding ingredients.
+        ///     Method for adding ingredients.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -100,23 +112,14 @@ namespace Assignment1_Apu
         }
 
         /// <summary>
-        /// Just a method for clearing the inputfields.
-        /// </summary>
-        public void ClearForm()
-        {
-            ingredientTextbox.Clear();
-            IngredientAmount.Clear();
-        }
-
-        /// <summary>
-        /// Method for appending items, formatted, to the ingredientlist.
+        ///     Method for appending items, formatted, to the ingredientlist.
         /// </summary>
         private void AddIngredient()
         {
             if (ingredientTextbox.Text == null || IngredientAmount.Text == null)
                 return;
 
-            var ingredient = new Ingredient()
+            var ingredient = new Ingredient
             {
                 Amount = float.Parse(IngredientAmount.Text),
                 Name = ingredientTextbox.Text
@@ -136,25 +139,16 @@ namespace Assignment1_Apu
             foreach (Ingredient ingredient in IngredientListBox.Items)
             {
                 portions = portions < 0 ? 1 : float.Parse(cmbAmountOfPortions.SelectedItem.ToString());
-                ingredient.Amount = (ingredient.Amount * portions);
+                ingredient.Amount = ingredient.Amount * portions;
             }
             cmbAmountOfPortions.SelectedItem = null;
             IngredientListBox.Items.Clear();
             foreach (var ingredient in GetIngredients)
-            {
                 IngredientListBox.Items.Add(ingredient);
-            }
         }
 
-        // Properties.
-        #region Properties.
-
-        public List<Ingredient> GetIngredients { get; } = new List<Ingredient>();
-
-        #endregion
-
         /// <summary>
-        /// Helper function to make sure users only input numbers in the amount textbox.
+        ///     Helper function to make sure users only input numbers in the amount textbox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -163,16 +157,12 @@ namespace Assignment1_Apu
             // Makes sure that that pressed key is NOT a control character
             // also makes sure it's not a char (only allow digits).
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
-            {
+                e.KeyChar != '.')
                 e.Handled = true;
-            }
 
             // only allow one decimal point
-            if ((e.KeyChar == '.') && (((TextBox) sender).Text.IndexOf('.') > -1))
-            {
+            if (e.KeyChar == '.' && ((TextBox) sender).Text.IndexOf('.') > -1)
                 e.Handled = true;
-            }
         }
     }
 }

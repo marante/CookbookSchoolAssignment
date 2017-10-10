@@ -33,7 +33,7 @@ namespace Assignment1_Apu
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.BtnRecipeAddIngredients = new System.Windows.Forms.Button();
-            this.RecipeDropdownCategory = new System.Windows.Forms.ComboBox();
+            this.CourseTypeDropdownCategory = new System.Windows.Forms.ComboBox();
             this.RecipeTextbox = new System.Windows.Forms.TextBox();
             this.AddNewRecipe = new System.Windows.Forms.GroupBox();
             this.MealTypeDropdownList = new System.Windows.Forms.ComboBox();
@@ -57,11 +57,11 @@ namespace Assignment1_Apu
             this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importFromXMLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToXMLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNewRecipe.SuspendLayout();
             this.mnuFileStrip.SuspendLayout();
             this.SuspendLayout();
@@ -78,14 +78,14 @@ namespace Assignment1_Apu
             this.BtnRecipeAddIngredients.UseVisualStyleBackColor = false;
             this.BtnRecipeAddIngredients.Click += new System.EventHandler(this.BtnRecipeAddIngredients_Click);
             // 
-            // RecipeDropdownCategory
+            // CourseTypeDropdownCategory
             // 
-            this.RecipeDropdownCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.RecipeDropdownCategory.FormattingEnabled = true;
-            this.RecipeDropdownCategory.Location = new System.Drawing.Point(133, 61);
-            this.RecipeDropdownCategory.Name = "RecipeDropdownCategory";
-            this.RecipeDropdownCategory.Size = new System.Drawing.Size(105, 24);
-            this.RecipeDropdownCategory.TabIndex = 1;
+            this.CourseTypeDropdownCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CourseTypeDropdownCategory.FormattingEnabled = true;
+            this.CourseTypeDropdownCategory.Location = new System.Drawing.Point(133, 61);
+            this.CourseTypeDropdownCategory.Name = "CourseTypeDropdownCategory";
+            this.CourseTypeDropdownCategory.Size = new System.Drawing.Size(105, 24);
+            this.CourseTypeDropdownCategory.TabIndex = 1;
             // 
             // RecipeTextbox
             // 
@@ -103,7 +103,7 @@ namespace Assignment1_Apu
             this.AddNewRecipe.Controls.Add(this.lblNameOfRecipe);
             this.AddNewRecipe.Controls.Add(this.RecipeTextbox);
             this.AddNewRecipe.Controls.Add(this.BtnRecipeAddIngredients);
-            this.AddNewRecipe.Controls.Add(this.RecipeDropdownCategory);
+            this.AddNewRecipe.Controls.Add(this.CourseTypeDropdownCategory);
             this.AddNewRecipe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddNewRecipe.Location = new System.Drawing.Point(12, 44);
             this.AddNewRecipe.Name = "AddNewRecipe";
@@ -221,9 +221,9 @@ namespace Assignment1_Apu
             this.lblListboxDish.AutoSize = true;
             this.lblListboxDish.Location = new System.Drawing.Point(839, 80);
             this.lblListboxDish.Name = "lblListboxDish";
-            this.lblListboxDish.Size = new System.Drawing.Size(28, 13);
+            this.lblListboxDish.Size = new System.Drawing.Size(55, 13);
             this.lblListboxDish.TabIndex = 10;
-            this.lblListboxDish.Text = "Dish";
+            this.lblListboxDish.Text = "MeatType";
             // 
             // BtnDeleteRecipe
             // 
@@ -306,22 +306,12 @@ namespace Assignment1_Apu
             this.mnuFileSaveAs.Name = "mnuFileSaveAs";
             this.mnuFileSaveAs.Size = new System.Drawing.Size(152, 22);
             this.mnuFileSaveAs.Text = "Save &As";
+            this.mnuFileSaveAs.Click += new System.EventHandler(this.mnuFileSaveAs_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
-            // 
-            // mnuFileExit
-            // 
-            this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.Size = new System.Drawing.Size(152, 22);
-            this.mnuFileExit.Text = "E&xit";
             // 
             // xMLToolStripMenuItem
             // 
@@ -343,6 +333,17 @@ namespace Assignment1_Apu
             this.exportToXMLFileToolStripMenuItem.Name = "exportToXMLFileToolStripMenuItem";
             this.exportToXMLFileToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.exportToXMLFileToolStripMenuItem.Text = "Export to XML file";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // mnuFileExit
+            // 
+            this.mnuFileExit.Name = "mnuFileExit";
+            this.mnuFileExit.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileExit.Text = "E&xit";
             // 
             // FormMain
             // 
@@ -375,7 +376,7 @@ namespace Assignment1_Apu
         #endregion
 
         private System.Windows.Forms.Button BtnRecipeAddIngredients;
-        private System.Windows.Forms.ComboBox RecipeDropdownCategory;
+        private System.Windows.Forms.ComboBox CourseTypeDropdownCategory;
         private System.Windows.Forms.TextBox RecipeTextbox;
         private System.Windows.Forms.GroupBox AddNewRecipe;
         private System.Windows.Forms.TextBox RecipeNameTextBox;

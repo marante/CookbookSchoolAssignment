@@ -45,8 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\Dish.cs" />
+    <Compile Include="Enums\BirdType.cs" />
+    <Compile Include="Enums\FishType.cs" />
     <Compile Include="Enums\MealType.cs" />
+    <Compile Include="Enums\MeatType.cs" />
+    <Compile Include="Enums\VegetarianType.cs" />
+    <Compile Include="Models\Recipes\FishRecipe.cs" />
+    <Compile Include="Enums\CourseType.cs" />
     <Compile Include="FormIngredient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,10 +70,13 @@
     <Compile Include="ListManager.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\CookBook.cs" />
+    <Compile Include="Models\Recipes\MeatRecipe.cs" />
     <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\Recipes\BirdRecipe.cs" />
+    <Compile Include="Models\Recipes\VegetarianRecipe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\BaseRecipe.cs" />
     <Compile Include="RecipeManager.cs" />
     <Compile Include="Serializers\Binary.cs" />
     <EmbeddedResource Include="FormIngredient.resx">

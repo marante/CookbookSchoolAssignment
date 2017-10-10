@@ -3,10 +3,9 @@
 namespace Assignment1_Apu.Models
 {
     /// <summary>
-    /// Ingredient model
+    ///     Ingredient model
     /// </summary>
     [Serializable]
-
     public class Ingredient
     {
         public string Name { get; set; }
