@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Windows.Forms;
-using Assignment1_Apu.Enums;
+﻿using Assignment1_Apu.Enums;
 using Assignment1_Apu.HelperMethods;
 using Assignment1_Apu.Models;
 using Assignment1_Apu.Serializers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Assignment1_Apu
 {
@@ -64,13 +63,22 @@ namespace Assignment1_Apu
         /// </summary>
         private void CreateRecipe()
         {
+            if (string.IsNullOrEmpty(RecipeNameTextBox.Text) || string.IsNullOrEmpty(RecipeTextbox.Text))
+            {
+                MessageBox.Show(
+                    "You have not entered the correct inputs. Make sure you have both a recipe name and description",
+                    "Invalid inputs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             var recipe = new BaseRecipe
             {
                 Name = RecipeNameTextBox.Text,
                 Description = RecipeTextbox.Text,
                 NumOfIngredients = _ingredients.Count,
-                CourseType = (CourseType) CourseTypeDropdownCategory.SelectedIndex,
-                MealType = (MealType) MealTypeDropdownList.SelectedIndex,
+                CourseType = (CourseType)CourseTypeDropdownCategory.SelectedIndex,
+                MealType = (MealType)MealTypeDropdownList.SelectedIndex,
                 Ingredients = _ingredients
             };
 
@@ -132,7 +140,7 @@ namespace Assignment1_Apu
             if (RecipeListbox.SelectedItem == null)
                 return;
 
-            var rec = (BaseRecipe) RecipeListbox.SelectedItem;
+            var rec = (BaseRecipe)RecipeListbox.SelectedItem;
             var ingredientForm = new FormIngredient(this, rec);
             var result = ingredientForm.ShowDialog();
             if (result != DialogResult.OK) return;
@@ -153,7 +161,7 @@ namespace Assignment1_Apu
             if (RecipeListbox.SelectedItem == null)
                 return;
 
-            var selRecipe = (BaseRecipe) RecipeListbox.SelectedItem;
+            var selRecipe = (BaseRecipe)RecipeListbox.SelectedItem;
             RecipeListbox.Items.Remove(RecipeListbox.SelectedItem);
             var index = _manager.GetIndex(selRecipe);
             _manager.DeleteAt(index);
@@ -172,17 +180,20 @@ namespace Assignment1_Apu
         {
             if (_isSaved)
             {
-                Process.Start(Application.ExecutablePath);
-                Application.Exit();
+                Application.Restart();
+                Environment.Exit(0);
             }
 
             var result = MessageBox.Show("You have unsaved data. Would you like to continue?", "Unsaved Data",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result != DialogResult.Yes)
+            {
+                SaveAs();
                 return;
+            }
 
-            Process.Start(Application.ExecutablePath);
-            Application.Exit();
+            Application.Restart();
+            Environment.Exit(0);
         }
 
         /// <summary>
@@ -218,6 +229,11 @@ namespace Assignment1_Apu
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void mnuFileSaveAs_Click(object sender, EventArgs e)
+        {
+            SaveAs();
+        }
+
+        private void SaveAs()
         {
             var filePath = _fileHelper.SaveFilePath();
             if (filePath == null) return;
